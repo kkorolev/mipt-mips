@@ -59,7 +59,6 @@ class InstrMemory : public FuncMemory
             return FuncMemory::memcpy_host_to_guest( dst, src, size);
         }
 
-
         template<typename T>
         void write( T value, Addr addr, T mask = all_ones<T>())
         {

@@ -37,6 +37,10 @@ public:
     virtual std::pair<StopReason, TrapType> run_single_step() = 0;
     void run_no_limit( const std::string& tr) { init( tr); run( MAX_VAL64); }
     virtual void set_target( const Target& target) = 0;
+    virtual uint64 get_register(size_t) const { return 0; }
+    virtual uint64 get_pc() const { return 0; }
+    virtual uint32 read_uint32(Addr addr) const = 0;
+    virtual void write_uint32(uint32 value, Addr addr) = 0;
 
     static std::unique_ptr<Simulator> create_simulator( const std::string& isa, bool functional_only, bool log);
     static std::unique_ptr<Simulator> create_configured_simulator();
